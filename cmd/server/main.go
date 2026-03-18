@@ -12,7 +12,7 @@ import (
 )
 
 type apiConfig struct {
-	db        *database.Queries
+	db        database.Store
 	jwtSecret string
 }
 

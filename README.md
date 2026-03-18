@@ -1,3 +1,5 @@
+![CI](https://github.com/TheKankan/Terminal_Chat/actions/workflows/ci.yml/badge.svg)
+
 # Terminal_Chat
 
 A terminal-based chat application allowing multiple users to communicate through a client-server architecture.

@@ -8,6 +8,8 @@ import (
 	"os"
 	"strings"
 
+	"github.com/TheKankan/TerminalSecuredChat/internal/validator"
+
 	_ "github.com/lib/pq"
 )
 
@@ -27,7 +29,7 @@ func (cfg *config) handlerLogin() *User {
 		input, _ := reader.ReadString('\n')
 		input = strings.TrimSpace(input)
 
-		if isValidUsername(input) {
+		if validator.IsValidUsername(input) {
 			username = input
 			break
 		}
@@ -41,7 +43,7 @@ func (cfg *config) handlerLogin() *User {
 		fmt.Print("Password: ")
 		input, _ := reader.ReadString('\n')
 
-		if isValidPassword(input) {
+		if validator.IsValidPassword(input) {
 			password = input
 			break
 		}
@@ -97,7 +99,7 @@ func (cfg *config) handlerRegister() *User {
 		input, _ := reader.ReadString('\n')
 		input = strings.TrimSpace(input)
 
-		if isValidUsername(input) {
+		if validator.IsValidUsername(input) {
 			username = input
 			break
 		}
@@ -111,7 +113,7 @@ func (cfg *config) handlerRegister() *User {
 		fmt.Print("Password: ")
 		input, _ := reader.ReadString('\n')
 
-		if isValidPassword(input) {
+		if validator.IsValidPassword(input) {
 			password = input
 			break
 		}
@@ -154,28 +156,4 @@ func (cfg *config) handlerRegister() *User {
 
 	fmt.Println("✅ Registration successful!")
 	return &userResp.User
-}
-
-func isValidUsername(s string) bool {
-	const maxInput = 20
-
-	if len(s) == 0 || len(s) > maxInput {
-		return false
-	}
-
-	// No space
-	for _, r := range s {
-		if r == ' ' {
-			return false
-		}
-	}
-
-	return true
-}
-
-func isValidPassword(s string) bool {
-	const minInput = 4
-	const maxInput = 100
-
-	return len(s) >= minInput && len(s) <= maxInput
 }

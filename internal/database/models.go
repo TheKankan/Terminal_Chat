@@ -10,6 +10,13 @@ import (
 	"github.com/google/uuid"
 )
 
+type Message struct {
+	ID        uuid.UUID
+	CreatedAt time.Time
+	UserID    uuid.UUID
+	Content   string
+}
+
 type User struct {
 	ID             uuid.UUID
 	CreatedAt      time.Time

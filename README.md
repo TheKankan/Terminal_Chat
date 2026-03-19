@@ -25,14 +25,15 @@ It focuses on building a backend from scratch, handling environment configuratio
 
 ### Running
 
+1. Clone the repo
 ```bash
-# 1. Clone the repo
 git clone https://github.com/TheKankan/Terminal_Chat.git
-cd Terminal_Chat
+```
 
-# 2. Edit .env.example : rename it .env and change the values inside it
+2. Edit .env.example : rename it .env and change the values inside it
 
-# 3. Start the server and database
+3. Start the server and database
+```bash
 docker compose up
 ```
 
@@ -56,20 +57,25 @@ You can open as many clients as you want in separate terminals.
 
 ### Running
 
+1. Clone the repo
 ```bash
-# 1. Clone the repo
 git clone https://github.com/TheKankan/Terminal_Chat.git
-cd Terminal_Chat
+```
 
-# 2. Edit .env.example : rename it .env and change the values inside it
+2. Edit .env.example : rename it .env and change the values inside it
 
-# 3. Run migrations
+3. Run migrations
+```bash
 goose -dir sql/schema postgres "$DB_URL" up
+```
 
-# 4. Start the server
+4. Start the server
+```bash
 go run ./cmd/server
+```
 
-# 5. In separate terminals, start clients
+5. In separate terminals, start clients
+```bash
 go run ./cmd/client
 ```
 

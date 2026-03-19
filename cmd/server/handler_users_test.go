@@ -65,6 +65,14 @@ func (m *mockStore) ChangePasswordAndUsername(_ context.Context, arg database.Ch
 	return database.User{}, &userNotFoundError{}
 }
 
+func (m *mockStore) CreateMessage(_ context.Context, arg database.CreateMessageParams) (database.Message, error) {
+	return database.Message{}, nil
+}
+
+func (m *mockStore) GetRecentMessages(_ context.Context, limit int32) ([]database.GetRecentMessagesRow, error) {
+	return []database.GetRecentMessagesRow{}, nil
+}
+
 type userNotFoundError struct{ username string }
 
 func (e *userNotFoundError) Error() string { return "user not found: " + e.username }
